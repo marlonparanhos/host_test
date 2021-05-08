@@ -1,18 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import './App.scss'
 import Grid from '@material-ui/core/Grid'
 
 import leftImage from './assets/images/Grupo-29995.svg'
 import rightImage from './assets/images/Grupo-29996.svg'
 import arrowDown from './assets/images/arrow-down.svg'
-import forward from './assets/images/forward.svg'
-import backward from './assets/images/backward.svg'
+// import backward from './assets/images/backward.svg'
+// import forward from './assets/images/forward.svg'
 import planP from './assets/images/planP.svg'
+import hostgatorLogo from './assets/images/hostgator-logo.svg'
+import infoIcon from './assets/images/infoIcon.svg'
 
 import RadioGroup from './components/RadioGroup'
 
 import { Paper } from '@material-ui/core'
-import Carousel from 'react-material-ui-carousel'
+
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
+
 // import styled from 'styled-components'
 
 // const Title = styled.p`
@@ -23,71 +28,71 @@ import Carousel from 'react-material-ui-carousel'
 
 function Item(props) {
   return (
-      <Paper className="planCard">
-          <div className="planCard__section01">
-            <img src={planP} alt="plan name"/>
-            <h2>Plano P</h2>
-          </div>
+    <Paper className="planCard">
+      <span className="cardHoverUp"/>
+      <div className="planCard__section01">
+        <img src={planP} alt="plan name"/>
+        <h2>Plano P</h2>
+      </div>
 
-          <hr />
+      <hr />
 
-          <div className="planCard__section02">
-            <span className="priceTop">
-              <span className="dashedPrice">
-                <p>R$ 431,64</p>
-                <strong>R$ 302,15</strong>
-              </span>
-              <p>equivalente a</p>
-            </span>
+      <div className="planCard__section02">
+        <span className="priceTop">
+          <span className="dashedPrice">
+            <p>R$ 431,64</p>
+            <strong>R$ 302,15</strong>
+          </span>
+          <p>equivalente a</p>
+        </span>
 
-            <span className="priceMiddle">
-              R$ <strong>8,39</strong>/mês*
-            </span>
+        <span className="priceMiddle">
+          R$ <strong>8,39</strong>/mês*
+        </span>
 
-            <button>Contrate Agora</button>
+        <button>Contrate Agora</button>
 
-            <span className="priceBottom">
-              <strong>1 ano de Domínio Grátis</strong>
-              <span>
-                <p>economiza R$ 174,48</p>
-                <span>40% OFF badge</span>
-              </span>
-            </span>
-          </div>
+        <span className="priceBottom">
+          <strong>
+            1 ano de Domínio Grátis
+            <img src={infoIcon} alt="info icon"/>
+          </strong>
 
-          <hr />
+          <span>
+            <p>economiza R$ 174,48</p>
+            <span>40% OFF</span>
+          </span>
+        </span>
+      </div>
 
-          <div className="planCard__section03">
-            <ul>
-              <li>Para 1 site</li>
-              <li>100 GB de Armazenamento</li>
-              <li>Contas de E-mail Ilimitadas</li>
-              <li>Criador de Sites Grátis</li>
-              <li>Certificado SSL Grátis (https)</li>
-            </ul>
-          </div>
-      </Paper>
+      <hr />
+
+      <div className="planCard__section03">
+        <ul>
+          <li>Para 1 site</li>
+          <li><strong>100 GB</strong> de Armazenamento</li>
+          <li>Contas de E-mail <strong>Ilimitadas</strong></li>
+          <li>Criador de Sites <strong><u>Grátis</u></strong></li>
+          <li>Certificado SSL <strong>Grátis</strong> (https)</li>
+        </ul>
+      </div>
+      <span className="cardHoverDown"/>
+    </Paper>
   )
 }
+
+const scrollToRef = (ref) => window.scrollTo(0, ref?.current?.offsetTop || 0)
 
 function App() {
   const [selected, setSelected] = useState('first')
 
-  const items = [
-    {
-      name: 'Random Name #1',
-      description: 'Probably the most random thing you have ever seen!'
-    },
-    {
-      name: 'Random Name #2',
-      description: 'Hello World!'
-    }
-  ]
+  const plansSection = useRef(null)
+  const executeScroll = () => scrollToRef(plansSection)
 
   return (
     <div className="App">
       <nav>
-        <img src='https://svgshare.com/i/X1s.svg' alt='hostgator' />
+        <img src={hostgatorLogo} alt='hostgator' />
       </nav>
 
       <main className="mainContainer">
@@ -96,7 +101,7 @@ function App() {
             <svg viewBox="0 0 500 150" preserveAspectRatio="none">
               <path d="M-7.62,144.56 C161.11,154.44 316.87,131.73 501.97,145.55 L500.00,0.00 L0.00,0.00 Z"></path>
             </svg>
-            <img src={arrowDown} alt='arrow down' />
+            <img src={arrowDown} alt='arrow down' onClick={() => executeScroll()}/>
           </div>
 
           <Grid container className="mainContent">
@@ -121,9 +126,9 @@ function App() {
           </Grid>
         </section>
 
-        <section className="mainContainer__plans">
+        <section className="mainContainer__plans" ref={plansSection}>
           <p>Quero pagar a cada:</p>
-          <div>
+          <div className="radioGroupBack">
             <RadioGroup
               value="first"
               selected={selected}
@@ -148,23 +153,44 @@ function App() {
 
         <section className="mainContainer__carousel">
           <Carousel
-            NextIcon={<img src={forward}/>}
-            PrevIcon={<img src={backward}/>}
-            navButtonsProps={{
-              style: {
-                backgroundColor: '#1D5297',
-                height: 35,
-                width: 35,
-                margin: '0 4px'
+            containerClass="carousel-container"
+            itemClass="carousel-item-padding"
+            draggable
+            renderButtonGroupOutside={false}
+            responsive={{
+              desktop: {
+                breakpoint: {
+                  max: 3000,
+                  min: 1024
+                },
+                items: 3,
+                partialVisibilityGutter: 40
+              },
+              mobile: {
+                breakpoint: {
+                  max: 464,
+                  min: 0
+                },
+                items: 1,
+                partialVisibilityGutter: 30
+              },
+              tablet: {
+                breakpoint: {
+                  max: 1024,
+                  min: 464
+                },
+                items: 2,
+                partialVisibilityGutter: 30
               }
             }}
-            autoPlay={false}
-            animation="slide"
-            // navButtonsAlwaysVisible
-            navButtonsAlwaysInvisible
-            indicators={false}
+            slidesToSlide={1}
+            swipeable
+            arrows
+            keyBoardControl
           >
-            {items.map((item, i) => <Item key={i} item={item} />)}
+            <Item />
+            <Item hovered />
+            <Item />
           </Carousel>
         </section>
 

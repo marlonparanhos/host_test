@@ -69,6 +69,12 @@ footer {
         right: 0;
         text-align: center;
         cursor: pointer;
+
+        transition: all .2s ease-in-out;
+
+        &:hover {
+          transform: scale(1.2);
+        }
       }
     }
 
@@ -119,7 +125,7 @@ footer {
           list-style: none;
 
           li {
-            background-image: url(assets/icon-check.svg);
+            background-image: url(assets/images/icon-check.svg);
             background-position: 5px 0px;
             background-repeat: no-repeat;
             font-size: 15px;
@@ -147,13 +153,14 @@ footer {
       margin-bottom: 10px;
     }
 
-    div {
+    .radioGroupBack {
       display: flex;
       flex-direction: row;
+      height: 40px;
 
-      // background: #FFFFFF;
-      // box-shadow: 0px 2px 4px #4480C570;
-      // border: 1px solid #4480C5;
+      background: #FFFFFF;
+      box-shadow: 0px 2px 4px #4480C570;
+      border: 1px solid #4480C5;
       border-radius: 25px;
     }
   }
@@ -164,12 +171,25 @@ footer {
     justify-content: center;
     align-items: center;
     width: 100%;
+
+    .carousel-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+
+      .carousel-item-padding { width: 350px !important; }
+    }
+
+    // .carousel-item-padding {
+    //   width: 340px !important;
+    // }
   }
 }
 
-
 /*PLAN CARD*/
 .planCard {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 650px;
@@ -177,12 +197,44 @@ footer {
   justify-content: space-between;
   align-items: center;
   padding: 60px 30px;
-
   background: #FFFFFF 0% 0% no-repeat padding-box;
   border: 1px solid #DFECFF;
   border-radius: 4px;
+  margin: 20px 0;
+
+  .cardHover {
+    position: absolute;
+    height: 14px;
+    width: 330px;
+    z-index: -1;
+    background: #FF6A17 0% 0% no-repeat padding-box;
+    border: 1px solid #DFECFF;
+    transition: all .2s ease-in-out;
+  }
+
+  .cardHoverUp {
+    @extend .cardHover;
+    top: 0;
+    border-radius: 4px 4px 0 0;
+  }
+
+  .cardHoverDown {
+    @extend .cardHover;
+    bottom: 0;
+    border-radius: 0 0 4px 4px;
+  }
+
+  &:hover {
+    .cardHoverUp { top: -12px; }
+    .cardHoverDown { bottom: -12px; }
+  }
 
   &__section01 {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    position: relative;
+
     h2 {
       text-align: center;
       font: normal normal bold 26px/26px Montserrat;
@@ -195,6 +247,27 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: 100%;
+    margin: 10px 0;
+
+    button {
+      width: 280px;
+      height: 52px;
+      background: #4480C5 0% 0% no-repeat padding-box;
+      border-radius: 26px;
+      border: none;
+      font: normal normal bold 22px/27px Montserrat;
+      color: #FFFFFF;
+      cursor: pointer;
+      margin: 14px 0;
+
+      transition: all .2s ease-in-out;
+
+      &:hover {
+        transform: scale(1.04);
+        background: #FF6A17 0% 0% no-repeat padding-box;
+      }
+    }
 
     .priceTop {
       display: flex;
@@ -229,21 +302,54 @@ footer {
       display: flex;
       flex-direction: column;
       align-items: center;
+
       strong {
+        display: flex;
+        align-items: center;
+        gap: 4px;
         font: normal normal bold 15px/20px Montserrat;
         letter-spacing: 0px;
         color: #333333;
+
+        img {
+          transition: all .2s ease-in-out;
+          cursor: pointer;
+
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
       }
 
       p {
         font: normal normal normal 14px/18px Montserrat;
         color: #1D5297;
       }
+
+      span:last-child {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 4px;
+
+        span {
+          background: #51C99C 0% 0% no-repeat padding-box;
+          border-radius: 224px;
+          width: 80px;
+          height: 24px;
+          font: normal normal bold 14px/18px Montserrat;
+          color: #FFFFFF;
+          text-transform: uppercase;
+        }
+      }
     }
 
   }
 
   &__section03 {
+    width: 100%;
+
     ul {
       list-style: none;
 
@@ -256,7 +362,7 @@ footer {
 
   hr {
     border: 1px solid #DFECFF;
-    width: 100%;
+    width: 330px;
   }
 
   div {
