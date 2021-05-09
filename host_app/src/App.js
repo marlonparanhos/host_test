@@ -25,13 +25,22 @@ import { RequestPlans } from './services'
 //   text-align: center;
 //   color: ${props => props.color || 'blue'};
 // `
-function Item() {
+function Item({ data }) {
+  const format = { minimumFractionDigits: 2, style: 'currency', currency: 'BRL' }
+  const handleValue = (value, discount) => discount ? value - (value * discount) : value
+  const { priceOrder } = data.cycle.triennially
+
+  const valueA = handleValue(priceOrder).toLocaleString('pt-BR', format)
+  const valueB = handleValue(priceOrder, 0.40).toLocaleString('pt-BR', format)
+  const valueC = (handleValue(priceOrder, 0.40) / 36).toLocaleString('pt-BR', format)
+  const valueD = (handleValue(priceOrder) - handleValue(priceOrder, 0.40)).toLocaleString('pt-BR', format)
+
   return (
     <Paper className="planCard">
       <span className="cardHoverUp"/>
       <div className="planCard__section01">
         <img src={planP} alt="plan name"/>
-        <h2>Plano P</h2>
+        <h2>{data.name}</h2>
       </div>
 
       <hr />
@@ -39,14 +48,14 @@ function Item() {
       <div className="planCard__section02">
         <span className="priceTop">
           <span className="dashedPrice">
-            <p>R$ 431,64</p>
-            <strong>R$ 302,15</strong>
+            <p>R$ {valueA}</p>
+            <strong>R$ {valueB}</strong>
           </span>
           <p>equivalente a</p>
         </span>
 
         <span className="priceMiddle">
-          R$ <strong>8,39</strong>/mês*
+          R$ <strong>{valueC}</strong>/mês*
         </span>
 
         <button>Contrate Agora</button>
@@ -58,7 +67,7 @@ function Item() {
           </strong>
 
           <span>
-            <p>economiza R$ 174,48</p>
+            <p>economiza R$ {valueD}</p>
             <span>40% OFF</span>
           </span>
         </span>
@@ -208,9 +217,10 @@ function App() {
             arrows
             keyBoardControl
           >
+            {/* <Item />
             <Item />
-            <Item />
-            <Item />
+            <Item /> */}
+            {Object.keys(fullState?.products).map(product => <Item data={fullState.products[product]} key={product.id} />)}
           </Carousel>
         </section>
 
