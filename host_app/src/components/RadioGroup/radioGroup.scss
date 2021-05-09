@@ -12,7 +12,17 @@
 
 .activeRadio {
   background: #4480C5 0% 0% no-repeat padding-box;
+  animation: 0.4s ease normal pulse;
 }
+
+@keyframes pulse {
+	@for $i from 0 through 100 {
+		#{$i * 1%} {
+			opacity: $i / 100;
+		}
+	}
+}
+
 
 .radio-outer-circle {
   width: 18px;
@@ -35,19 +45,33 @@
   background-color: #FFFFFF;
   transition: all 0.1s linear;
 }
+
 .unselected {
   border: 2px solid #B9D0EF;
 }
+
 .unselected-circle {
   width: 0;
   height: 0;
 }
+
 .helper-text {
   text-align: left;
-  font: normal normal bold 16px/23px Montserrat;
+  font: normal normal normal 16px/23px Montserrat;
   color: #16437E;
 }
 
 .activeText {
   color: #FFFFFF;
+  font-weight: bold !important;
+}
+
+
+@media (max-width: 320px) {
+  .modern-radio-container {
+    padding: 10px;
+  }
+  .helper-text {
+    font: normal normal normal 12px/23px Montserrat;
+  }
 }

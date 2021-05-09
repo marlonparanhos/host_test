@@ -1,22 +1,22 @@
-import React, { useState, useRef } from 'react'
-import './App.scss'
-import Grid from '@material-ui/core/Grid'
+import React, { useState, useRef, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 
-import leftImage from './assets/images/Grupo-29995.svg'
-import rightImage from './assets/images/Grupo-29996.svg'
-import arrowDown from './assets/images/arrow-down.svg'
-// import backward from './assets/images/backward.svg'
-// import forward from './assets/images/forward.svg'
-import planP from './assets/images/planP.svg'
-import hostgatorLogo from './assets/images/hostgator-logo.svg'
-import infoIcon from './assets/images/infoIcon.svg'
-
-import RadioGroup from './components/RadioGroup'
-
-import { Paper } from '@material-ui/core'
+import { Grid, Paper } from '@material-ui/core'
 
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
+
+import './App.scss'
+import leftImage from './assets/images/Grupo-29995.svg'
+import rightImage from './assets/images/Grupo-29996.svg'
+import arrowDown from './assets/images/arrow-down.svg'
+import planP from './assets/images/planP.svg'
+import hostgatorLogo from './assets/images/hostgator-logo.svg'
+import infoIcon from './assets/images/infoIcon.svg'
+import RadioGroup from './components/RadioGroup'
+
+import { useWindowSize } from './helpers'
+import { RequestPlans } from './services'
 
 // import styled from 'styled-components'
 
@@ -25,8 +25,7 @@ import 'react-multi-carousel/lib/styles.css'
 //   text-align: center;
 //   color: ${props => props.color || 'blue'};
 // `
-
-function Item(props) {
+function Item() {
   return (
     <Paper className="planCard">
       <span className="cardHoverUp"/>
@@ -89,11 +88,32 @@ function App() {
   const plansSection = useRef(null)
   const executeScroll = () => scrollToRef(plansSection)
 
+  const currentDevice = useWindowSize()
+
+  const dispatch = useDispatch()
+  const fullState = useSelector((state) => state)
+
+  useEffect(() => {
+    const products = ['product_5', 'product_6', 'product_335']
+    RequestPlans(products).then(data => {
+      dispatch({
+        type: 'SET_REQUESTED_PRODUCTS',
+        payload: data
+      })
+    })
+  }, [])
+
+  useEffect(() => {
+    console.log('fullState', fullState)
+  }, [fullState])
+
   return (
     <div className="App">
-      <nav>
-        <img src={hostgatorLogo} alt='hostgator' />
-      </nav>
+      <header>
+        <a href="https://www.hostgator.com.br/" target="_blank" rel="noreferrer">
+          <img src={hostgatorLogo} alt='hostgator' />
+        </a>
+      </header>
 
       <main className="mainContainer">
         <section className="mainContainer__content">
@@ -109,7 +129,7 @@ function App() {
               <img src={leftImage} alt='coffe table' />
             </Grid>
 
-            <Grid item xs={6} className="details">
+            <Grid item xs={currentDevice === 'web' ? 6 : 12} className="details">
               <h2>Hospedagem de Sites</h2>
               <h1>Tenha uma hospedagem de sites estável e<br/> evite perder visitantes diariamente</h1>
 
@@ -168,8 +188,8 @@ function App() {
               },
               mobile: {
                 breakpoint: {
-                  max: 464,
-                  min: 0
+                  max: 680,
+                  min: 320
                 },
                 items: 1,
                 partialVisibilityGutter: 30
@@ -177,7 +197,7 @@ function App() {
               tablet: {
                 breakpoint: {
                   max: 1024,
-                  min: 464
+                  min: 680
                 },
                 items: 2,
                 partialVisibilityGutter: 30
@@ -189,7 +209,7 @@ function App() {
             keyBoardControl
           >
             <Item />
-            <Item hovered />
+            <Item />
             <Item />
           </Carousel>
         </section>

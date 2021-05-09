@@ -11,13 +11,12 @@ body {
   font: 400 16px Montserrat, sans-serif;
 }
 
-nav {
+header {
   height: 52px;
   padding-left: 18%;
   display: flex;
   align-items: center;
   background: #FFFFFF;
-  position: absolute;
   width: 100%;
 }
 
@@ -25,12 +24,12 @@ footer {
   a {
     display: flex;
     justify-content: flex-end;
-    width: 100%;
+    width: 90%;
     text-decoration: underline;
     font: normal normal normal 12px/12px Montserrat;
     color: #4480C5;
     opacity: 0.7;
-    padding: 30px;
+    padding-bottom: 20px;
   }
 }
 
@@ -45,13 +44,13 @@ footer {
     justify-content: space-between;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 30px;
+    // margin-bottom: 30px;
     color: #FFFFFF;
     height: inherit;
 
     .background {
       svg {
-        height: 450px;
+        height: 400px;
         width: 100%;
         stroke: none;
         fill: #1d5297ff;
@@ -62,7 +61,7 @@ footer {
 
       img {
         position: absolute;
-        bottom: -5px;
+        bottom: 40px;
         margin-left: auto;
         margin-right: auto;
         left: 0;
@@ -74,6 +73,7 @@ footer {
 
         &:hover {
           transform: scale(1.2);
+          animation: none;
         }
       }
     }
@@ -85,18 +85,18 @@ footer {
       justify-content: center;
       align-items: center;
       padding: 0 50px;
+      margin-top: -80px;
 
       .sideImage {
         display: flex;
         align-items: flex-end;
-        margin-top: 160px;
+        margin-top: 150px;
 
         img {
           width: 100%;
           height: auto;
         }
       }
-
 
       .details {
         display: flex;
@@ -123,6 +123,9 @@ footer {
 
         ul {
           list-style: none;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
 
           li {
             background-image: url(assets/images/icon-check.svg);
@@ -173,17 +176,18 @@ footer {
     width: 100%;
 
     .carousel-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
       width: 100%;
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
 
-      .carousel-item-padding { width: 350px !important; }
+      // .carousel-item-padding { width: 350px !important; }
     }
 
-    // .carousel-item-padding {
-    //   width: 340px !important;
-    // }
+    .react-multiple-carousel__arrow {
+      background: #16437E !important;
+      font-weight: bold !important;
+    }
   }
 }
 
@@ -203,6 +207,7 @@ footer {
   margin: 20px 0;
 
   .cardHover {
+    display: none;
     position: absolute;
     height: 14px;
     width: 330px;
@@ -225,8 +230,14 @@ footer {
   }
 
   &:hover {
-    .cardHoverUp { top: -12px; }
-    .cardHoverDown { bottom: -12px; }
+    .cardHoverUp {
+      display: block;
+      top: -12px;
+    }
+    .cardHoverDown {
+      display: block;
+      bottom: -12px;
+    }
   }
 
   &__section01 {
@@ -302,6 +313,7 @@ footer {
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: 4px;
 
       strong {
         display: flex;
@@ -370,5 +382,107 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+}
+
+@media (max-width: 320px) {
+  header {
+    padding-left: 2%;
+  }
+
+  .mainContainer {
+    &__content {
+      .mainContent {
+        padding: 0 10px;
+
+        .sideImage {
+          display: none;
+        }
+
+        .details {
+          h1 { font: normal normal bold 24px/32px 'Montserrat'; }
+
+          ul {
+            list-style: none;
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    &__plans {
+      .radioGroupBack {
+        width: 290px;
+      }
+    }
+  }
+
+  .planCard {
+    width: 266px;
+    margin: 20px 40px;
+    padding: 10px;
+
+    &__section02 {
+      button {
+        width: 230px;
+        height: 44px;
+
+        &:hover {
+          transform: scale(1);
+        }
+      }
+    }
+
+    hr {
+      border: 1px solid #DFECFF;
+      width: 266px;
+    }
+
+    &:hover {
+      .cardHoverUp, .cardHoverDown {
+        display: none;
+      }
+    }
+  }
+
+  footer {
+    a {
+      justify-content: center;
+      width: 100%;
+      padding-bottom: 20px;
+    }
+  }
+}
+
+@media (min-device-width: 321px) and (max-width: 1024px) {
+  header {
+    padding-left: 2%;
+  }
+
+  .mainContainer {
+    &__content {
+      .mainContent {
+        .sideImage {
+          display: none;
+        }
+
+        .details {
+          h1 { font: normal normal bold 30px/45px 'Montserrat'; }
+
+          ul {
+            list-style: none;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    a {
+      justify-content: center;
+      width: 100%;
+      padding-bottom: 20px;
+    }
   }
 }
