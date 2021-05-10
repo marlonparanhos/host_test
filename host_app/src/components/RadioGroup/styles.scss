@@ -1,0 +1,81 @@
+@import '../../styles/global.scss';
+
+.radioGroupBack {
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+
+  background: #FFFFFF;
+  box-shadow: 0px 2px 4px $secondary-color;
+  border: 1px solid $secondary-color;
+  border-radius: 25px;
+
+  .radioContainer {
+    padding: 14px;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 25px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+
+    .outerCircle {
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      min-height: 18px;
+      border: 2px solid #FFFFFF;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 12px;
+
+      .innerCircle {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #FFFFFF;
+      }
+    }
+
+    .unselected { border: 2px solid #B9D0EF; }
+
+    .unselectedCircle {
+      width: 0;
+      height: 0;
+    }
+
+    .helperText {
+      text-align: left;
+      font: normal normal normal 16px/23px Montserrat;
+      color: $header-color;
+    }
+
+    .activeText {
+      color: #FFFFFF;
+      font-weight: bold !important;
+    }
+  }
+
+  .activeRadio {
+    background: $secondary-color 0% 0% no-repeat padding-box;
+    animation: 0.4s ease normal pulse;
+  }
+}
+
+@keyframes pulse {
+  @for $i from 0 through 100 {
+    #{$i * 1%} {
+      opacity: $i / 100;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .radioContainer { padding: 10px; }
+
+  .helperText { font: normal normal normal 12px/23px Montserrat; }
+}

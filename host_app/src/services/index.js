@@ -15,7 +15,5 @@ export async function RequestPlans(requestedProducts) {
       return filtered
     })
     .catch((error) => error.response)
-
-  console.log('response', response)
   return response
 }

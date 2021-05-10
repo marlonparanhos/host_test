@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap');
+
+$primary-color: #1D5297;
+$secondary-color: #4480C5;
+$background-color: #F1F6FB;
+$subtitle-color: #B9D0EF;
+$hover-color: #FF6A17;
+$border-color: #DFECFF;
+$text-color: #333333;
+$badge-color: #51C99C;
+$header-color: #16437E;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: $background-color 0% 0% no-repeat padding-box;
+  font: 400 16px Montserrat, sans-serif;
+}
+
+header {
+  height: 52px;
+  padding-left: 18%;
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  width: 100%;
+}
+
+footer {
+  a {
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
+    text-decoration: underline;
+    font: normal normal normal 12px/12px Montserrat;
+    color: $secondary-color;
+    opacity: 0.7;
+    padding-bottom: 20px;
+  }
+}

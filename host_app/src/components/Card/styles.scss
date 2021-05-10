@@ -1,0 +1,189 @@
+@import '../../styles/global.scss';
+
+.planCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 650px;
+  width: 330px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 30px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+  margin: 20px 0;
+
+  .cardHover {
+    display: none;
+    position: absolute;
+    height: 14px;
+    width: 330px;
+    z-index: -1;
+    background: $hover-color 0% 0% no-repeat padding-box;
+    border: 1px solid $border-color;
+    transition: all .2s ease-in-out;
+  }
+
+  .cardHoverUp {
+    @extend .cardHover;
+    top: 0;
+    border-radius: 4px 4px 0 0;
+  }
+
+  .cardHoverDown {
+    @extend .cardHover;
+    bottom: 0;
+    border-radius: 0 0 4px 4px;
+  }
+
+  &:hover {
+    .cardHoverUp {
+      display: block;
+      top: -12px;
+    }
+    .cardHoverDown {
+      display: block;
+      bottom: -12px;
+    }
+  }
+
+  &__section01 {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    position: relative;
+
+    h2 {
+      text-align: center;
+      font: normal normal bold 26px/26px Montserrat;
+      letter-spacing: 0px;
+      color: $primary-color;
+    }
+  }
+
+  &__section02 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin: 10px 0;
+
+    button {
+      width: 280px;
+      height: 52px;
+      background: $secondary-color 0% 0% no-repeat padding-box;
+      border-radius: 26px;
+      border: none;
+      font: normal normal bold 22px/27px Montserrat;
+      color: #FFFFFF;
+      cursor: pointer;
+      margin: 14px 0;
+      transition: all .2s ease-in-out;
+
+      &:hover {
+        transform: scale(1.04);
+        background: $hover-color 0% 0% no-repeat padding-box;
+      }
+    }
+
+    .priceTop {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      p {
+        font: normal normal normal 13px/19px Montserrat;
+        letter-spacing: 0px;
+        color: $text-color;
+      }
+
+      .dashedPrice {
+        display: flex;
+        gap: 4px;
+
+        p { text-decoration: line-through; }
+      }
+    }
+
+    .priceMiddle {
+      font: normal normal normal 20px/24px Montserrat;
+      letter-spacing: 0px;
+      color: $primary-color;
+
+      strong { font: normal normal bold 35px/24px Montserrat; }
+    }
+
+    .priceBottom {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+
+      strong {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font: normal normal bold 15px/20px Montserrat;
+        letter-spacing: 0px;
+        color: $text-color;
+
+        img {
+          transition: all .2s ease-in-out;
+          cursor: pointer;
+
+          &:hover { transform: scale(1.2); }
+        }
+      }
+
+      p {
+        font: normal normal normal 14px/18px Montserrat;
+        color: $primary-color;
+      }
+
+      span:last-child {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 4px;
+
+        span {
+          background: $badge-color 0% 0% no-repeat padding-box;
+          border-radius: 224px;
+          width: 80px;
+          height: 24px;
+          font: normal normal bold 14px/18px Montserrat;
+          color: #FFFFFF;
+          text-transform: uppercase;
+        }
+      }
+    }
+
+  }
+
+  &__section03 {
+    width: 100%;
+
+    ul {
+      list-style: none;
+
+      li {
+        font: normal normal normal 16px/32px Montserrat;
+        color: $text-color;
+      }
+    }
+  }
+
+  hr {
+    border: 1px solid $border-color;
+    width: 330px;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

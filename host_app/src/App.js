@@ -1,98 +1,25 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { Grid, Paper } from '@material-ui/core'
+import { Grid } from '@material-ui/core'
 
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 
 import './App.scss'
-import leftImage from './assets/images/Grupo-29995.svg'
-import rightImage from './assets/images/Grupo-29996.svg'
-import arrowDown from './assets/images/arrow-down.svg'
-import planP from './assets/images/planP.svg'
-import hostgatorLogo from './assets/images/hostgator-logo.svg'
-import infoIcon from './assets/images/infoIcon.svg'
+import { arrowDown, leftImage, rightImage, hostgatorLogo } from './assets/images'
+
 import RadioGroup from './components/RadioGroup'
+import Card from './components/Card'
 
 import { useWindowSize } from './helpers'
 import { RequestPlans } from './services'
-
-// import styled from 'styled-components'
-
-// const Title = styled.p`
-//   font-size: 1.5em;
-//   text-align: center;
-//   color: ${props => props.color || 'blue'};
-// `
-function Item({ data }) {
-  const format = { minimumFractionDigits: 2, style: 'currency', currency: 'BRL' }
-  const handleValue = (value, discount) => discount ? value - (value * discount) : value
-  const { priceOrder } = data.cycle.triennially
-
-  const valueA = handleValue(priceOrder).toLocaleString('pt-BR', format)
-  const valueB = handleValue(priceOrder, 0.40).toLocaleString('pt-BR', format)
-  const valueC = (handleValue(priceOrder, 0.40) / 36).toLocaleString('pt-BR', format)
-  const valueD = (handleValue(priceOrder) - handleValue(priceOrder, 0.40)).toLocaleString('pt-BR', format)
-
-  return (
-    <Paper className="planCard">
-      <span className="cardHoverUp"/>
-      <div className="planCard__section01">
-        <img src={planP} alt="plan name"/>
-        <h2>{data.name}</h2>
-      </div>
-
-      <hr />
-
-      <div className="planCard__section02">
-        <span className="priceTop">
-          <span className="dashedPrice">
-            <p>R$ {valueA}</p>
-            <strong>R$ {valueB}</strong>
-          </span>
-          <p>equivalente a</p>
-        </span>
-
-        <span className="priceMiddle">
-          R$ <strong>{valueC}</strong>/mês*
-        </span>
-
-        <button>Contrate Agora</button>
-
-        <span className="priceBottom">
-          <strong>
-            1 ano de Domínio Grátis
-            <img src={infoIcon} alt="info icon"/>
-          </strong>
-
-          <span>
-            <p>economiza R$ {valueD}</p>
-            <span>40% OFF</span>
-          </span>
-        </span>
-      </div>
-
-      <hr />
-
-      <div className="planCard__section03">
-        <ul>
-          <li>Para 1 site</li>
-          <li><strong>100 GB</strong> de Armazenamento</li>
-          <li>Contas de E-mail <strong>Ilimitadas</strong></li>
-          <li>Criador de Sites <strong><u>Grátis</u></strong></li>
-          <li>Certificado SSL <strong>Grátis</strong> (https)</li>
-        </ul>
-      </div>
-      <span className="cardHoverDown"/>
-    </Paper>
-  )
-}
+import { Responsive } from './constants'
 
 const scrollToRef = (ref) => window.scrollTo(0, ref?.current?.offsetTop || 0)
 
 function App() {
-  const [selected, setSelected] = useState('first')
+  const [selected, setSelected] = useState('3 anos')
 
   const plansSection = useRef(null)
   const executeScroll = () => scrollToRef(plansSection)
@@ -111,10 +38,6 @@ function App() {
       })
     })
   }, [])
-
-  useEffect(() => {
-    console.log('fullState', fullState)
-  }, [fullState])
 
   return (
     <div className="App">
@@ -157,27 +80,11 @@ function App() {
 
         <section className="mainContainer__plans" ref={plansSection}>
           <p>Quero pagar a cada:</p>
-          <div className="radioGroupBack">
-            <RadioGroup
-              value="first"
-              selected={selected}
-              text="3 anos"
-              onChange={setSelected}
-            />
-            <RadioGroup
-              value="second"
-              selected={selected}
-              text="1 ano"
-              onChange={setSelected}
-            />
-
-            <RadioGroup
-              value="third"
-              selected={selected}
-              text="1 mês"
-              onChange={setSelected}
-            />
-          </div>
+          <RadioGroup
+            selected={selected}
+            onChange={setSelected}
+            options={['3 anos', '1 ano', '1 mês']}
+          />
         </section>
 
         <section className="mainContainer__carousel">
@@ -186,41 +93,20 @@ function App() {
             itemClass="carousel-item-padding"
             draggable
             renderButtonGroupOutside={false}
-            responsive={{
-              desktop: {
-                breakpoint: {
-                  max: 3000,
-                  min: 1024
-                },
-                items: 3,
-                partialVisibilityGutter: 40
-              },
-              mobile: {
-                breakpoint: {
-                  max: 680,
-                  min: 320
-                },
-                items: 1,
-                partialVisibilityGutter: 30
-              },
-              tablet: {
-                breakpoint: {
-                  max: 1024,
-                  min: 680
-                },
-                items: 2,
-                partialVisibilityGutter: 30
-              }
-            }}
+            responsive={Responsive}
             slidesToSlide={1}
             swipeable
             arrows
             keyBoardControl
           >
-            {/* <Item />
-            <Item />
-            <Item /> */}
-            {Object.keys(fullState?.products).map(product => <Item data={fullState.products[product]} key={product.id} />)}
+            {Object.keys(fullState?.products).map(product => (
+              <Card
+                key={product.id}
+                data={fullState.products[product]}
+                selected={selected}
+                discount={0.40}
+              />)
+            )}
           </Carousel>
         </section>
 
