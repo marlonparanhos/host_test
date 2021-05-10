@@ -2,13 +2,11 @@
 You can access a demo example by clicking [here](https://host-test-nine.vercel.app/)
 
 ## Running the project
-You’ll need to have a pack manager in your machine, such as [NPM](https://nodejs.org/en/) or [Yarn](https://yarnpkg.com/) running on your machine. To execute a project, run:
+You’ll need to have a pack manager, such as [NPM](https://nodejs.org/en/) or [Yarn](https://yarnpkg.com/) running on your machine. After installed, you’ll need to have Node >= 10.16 and npm >= 5.6. For this, you can check doing it:
 
 ```
-$ npm install react-multi-carousel --save
-
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+$ node -v
+$ npm -v
 ```
 ## Downloading the project locally
 If you already have Git installed, you can run:
@@ -33,7 +31,19 @@ or if you're using Yarn:
 $ yarn start
 ```
 
-If you do not have Git yet, you can follow these instructions:
+## Running example test with Jest
+To run a simple Jest test in the application, you'll need to run:
+```
+$ npx jest
+```
+
+## Checking for syntax problems in styles
+For that, we can make use of a tool called Stylelint. You can type this command whenever you want to check for any erros in your style sheet syntax:
+```
+$ npx stylelint "**/*.scss"
+```
+
+**If you do not have Git yet, you can follow these instructions:**
 ### Install Git on Windows
 1. Navigate to the latest [Git for Windows installer](https://gitforwindows.org/) and download the latest version.
 2. Once the installer has started, follow the instructions as provided in the Git Setup wizard screen until the installation is complete.
@@ -65,5 +75,6 @@ You can install Git on Linux through the package management tool that comes with
 
 - Stylelint: utilizado para auxiliar na correção e padronização da sixtaxe das folhas de estilo
 - Axios: utilizado para consumir os dados pela API disponibilizada e alimentar o aplicação com dados reais
+- Utilização de automatizadores (Gulp, Grunt ou Webpack): Ao iniciar um projeto utilizando `npx create-react-app my-app`, o mesmo já vêm com o webpack pré-configurado
 - SASS: Utilizado por ser mais mais ágil e prático na construção de estilo para a aplicação
 - Animações e efeitos: Efeitos de hover e trasições feitos utilizando keyframes através do SASS
