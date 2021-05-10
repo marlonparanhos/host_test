@@ -42,3 +42,23 @@ footer {
 		width: 90%;
 	}
 }
+
+@media (max-width: 320px) {
+	footer {
+		a {
+			justify-content: center;
+			padding-bottom: 20px;
+			width: 100%;
+		}
+	}
+}
+
+@media (min-device-width: 321px) and (max-width: 1024px) {
+	footer {
+		a {
+			justify-content: center;
+			padding-bottom: 20px;
+			width: 100%;
+		}
+	}
+}

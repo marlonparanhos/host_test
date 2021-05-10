@@ -180,14 +180,6 @@
 			.card-hover-down { display: none; }
 		}
 	}
-
-	footer {
-		a {
-			justify-content: center;
-			padding-bottom: 20px;
-			width: 100%;
-		}
-	}
 }
 
 @media (min-device-width: 321px) and (max-width: 1024px) {
@@ -203,14 +195,6 @@
 				list-style: none;
 				text-align: center;
 			}
-		}
-	}
-
-	footer {
-		a {
-			justify-content: center;
-			padding-bottom: 20px;
-			width: 100%;
 		}
 	}
 }
