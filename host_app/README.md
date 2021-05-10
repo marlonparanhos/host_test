@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+## Demo
+You can access a demo example by clicking [here](https://host-test-nine.vercel.app/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Running the project
+You’ll need to have a pack manager in your machine, such as [NPM](https://nodejs.org/en/) or [Yarn](https://yarnpkg.com/) running on your machine. To execute a project, run:
 
-## Available Scripts
+```
+$ npm install react-multi-carousel --save
 
-In the project directory, you can run:
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+```
+## Downloading the project locally
+If you already have Git installed, you can run:
+```
+$ git clone https://github.com/marlonparanhos/host_test.git
+```
+Navigate to source code directory, then run:
+```
+$ npm install
 
-### `yarn start`
+or if you're using Yarn:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+$ yarn
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+After all depencies has been installed, you can run the project by executing:
+```
+$ npm start
 
-### `yarn test`
+or if you're using Yarn:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+$ yarn start
+```
 
-### `yarn build`
+If you do not have Git yet, you can follow these instructions:
+### Install Git on Windows
+1. Navigate to the latest [Git for Windows installer](https://gitforwindows.org/) and download the latest version.
+2. Once the installer has started, follow the instructions as provided in the Git Setup wizard screen until the installation is complete.
+3. Open the windows command prompt (or Git Bash if you selected not to use the standard Git Windows Command Prompt during the Git installation).
+4. Type git version to verify Git was installed.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Note: git-scm is a popular and recommended resource for downloading Git for Windows. The advantage of downloading Git from git-scm is that your download automatically starts with the latest version of Git included with the recommended command prompt, Git Bash . The download source is the same [Git for Windows installer](https://gitforwindows.org/) as referenced in the steps above.**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Install Git on Mac
+Most versions of MacOS will already have Git installed, and you can activate it through the terminal with git version. However, if you don't have Git installed for whatever reason, you can install the latest version of Git using one of several popular methods as listed below:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Navigate to the latest [macOS Git Installer](https://sourceforge.net/projects/git-osx-installer/files/git-2.23.0-intel-universal-mavericks.dmg/download?use_mirror=autoselect) and download the latest version.
+2. Once the installer has started, follow the instructions as provided until the installation is complete.
+3. Open the command prompt "terminal" and type git version to verify Git was installed.
 
-### `yarn eject`
+**Note: git-scm is a popular and recommended resource for downloading Git on a Mac. The advantage of downloading Git from git-scm is that your download automatically starts with the latest version of Git. The download source is the same macOS Git Installer as referenced in the steps above.**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Install Git on Linux
+You can install Git on Linux through the package management tool that comes with your distribution.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Git packages are available using apt.
+2. It's a good idea to make sure you're running the latest version. To do so, Navigate to your command prompt shell and run the following command to make sure everything is up-to-date: sudo apt-get update.
+3. To install Git, run the following command: sudo apt-get install git-all.
+4. Once the command output has completed, you can verify the installation by typing: git version.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**Note: You can download the proper Git versions and read more about how to install on specific Linux systems, like installing Git on Ubuntu or Fedora, in git-scm's documentation.**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Extras utilizados
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Stylelint: utilizado para auxiliar na correção e padronização da sixtaxe das folhas de estilo
+- Axios: utilizado para consumir os dados pela API disponibilizada e alimentar o aplicação com dados reais
+- SASS: Utilizado por ser mais mais ágil e prático na construção de estilo para a aplicação
+- Animações e efeitos: Efeitos de hover e trasições feitos utilizando keyframes através do SASS
