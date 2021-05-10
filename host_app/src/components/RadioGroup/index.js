@@ -7,17 +7,17 @@ export default function RadioGroup(props) {
   const { selected, onChange, options } = props
 
   return (
-    <div className="radioGroupBack">
+    <div className="radio-group-back">
       {options.map((item, index) => {
-        const activeRadio = selected === item && 'activeRadio'
-        const activeText = selected === item && 'activeText'
+        const activeRadio = selected === item && 'active-radio'
+        const activeText = selected === item && 'active-text'
 
         return (
-          <div key={index} className={`${activeRadio} radioContainer`} onClick={() => onChange(item)}>
-            <div className={`outerCircle ${item !== selected && 'unselected'}`}>
-              <div className={`innerCircle ${item !== selected && 'unselectedCircle'}`}/>
+          <div key={index} className={`${activeRadio} radio-container`} onClick={() => onChange(item)}>
+            <div className={`outer-circle ${item !== selected && 'unselected'}`}>
+              <div className={`inner-circle ${item !== selected && 'unselected-circle'}`}/>
             </div>
-            <div className={`${activeText} helperText`}>{item}</div>
+            <div className={`${activeText} helper-text`}>{item}</div>
           </div>
         )
       })}

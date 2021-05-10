@@ -8,7 +8,7 @@ import { planP, planM, planTurbo, infoIcon } from '../../assets/images'
 
 export default function Card({ data, selected, discount }) {
   const format = { minimumFractionDigits: 2, style: 'currency', currency: 'BRL' }
-  const handleValue = (value) => discount ? value - (value * discount) : value
+  const handleValue = (value, auxDiscount) => auxDiscount ? value - (value * auxDiscount) : value
 
   const handleIcon = () => {
     switch (data.name) {
@@ -49,30 +49,30 @@ export default function Card({ data, selected, discount }) {
   const { priceOrder } = data.cycle[planType.name]
 
   const valueA = handleValue(priceOrder).toLocaleString('pt-BR', format)
-  const valueB = handleValue(priceOrder).toLocaleString('pt-BR', format)
+  const valueB = handleValue(priceOrder, discount).toLocaleString('pt-BR', format)
   const valueC = (handleValue(priceOrder) / planType.perid).toLocaleString('pt-BR', format)
-  const valueD = (handleValue(priceOrder) - handleValue(priceOrder)).toLocaleString('pt-BR', format)
+  const valueD = (handleValue(priceOrder) - handleValue(priceOrder, discount)).toLocaleString('pt-BR', format)
 
   return (
-    <Paper className="planCard">
-      <span className="cardHoverUp"/>
-      <div className="planCard__section01">
+    <Paper className="plan-card">
+      <span className="card-hover-up"/>
+      <div className="plan-card__section01">
         <img src={handleIcon()} alt="plan name"/>
         <h2>{data.name}</h2>
       </div>
 
       <hr />
 
-      <div className="planCard__section02">
-        <span className="priceTop">
-          <span className="dashedPrice">
+      <div className="plan-card__section02">
+        <span className="price-top">
+          <span className="dashed-price">
             <p>R$ {valueA}</p>
             <strong>R$ {valueB}</strong>
           </span>
           <p>equivalente a</p>
         </span>
 
-        <span className="priceMiddle">
+        <span className="price-middle">
           R$ <strong>{valueC}</strong>/mês*
         </span>
 
@@ -84,13 +84,13 @@ export default function Card({ data, selected, discount }) {
           <button>Contrate Agora</button>
         </a>
 
-        <span className="priceBottom">
+        <span className="price-bottom">
           <strong>
             1 ano de Domínio Grátis
             <img src={infoIcon} alt="info icon"/>
           </strong>
 
-          <span>
+          <span className="price-bottom-badge">
             <p>economiza R$ {valueD}</p>
             <span>40% OFF</span>
           </span>
@@ -99,7 +99,7 @@ export default function Card({ data, selected, discount }) {
 
       <hr />
 
-      <div className="planCard__section03">
+      <div className="plan-card__section03">
         <ul>
           <li>{data.name === 'Plano P' ? 'Para 1 site' : 'Sites ilimitados'}</li>
           <li><strong>{data.name === 'Plano Turbo' ? '150' : '100'}GB</strong> de Armazenamento</li>
@@ -108,7 +108,7 @@ export default function Card({ data, selected, discount }) {
           <li>Certificado SSL <strong>Grátis</strong> (https)</li>
         </ul>
       </div>
-      <span className="cardHoverDown"/>
+      <span className="card-hover-down"/>
     </Paper>
   )
 }

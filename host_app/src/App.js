@@ -47,8 +47,8 @@ function App() {
         </a>
       </header>
 
-      <main className="mainContainer">
-        <section className="mainContainer__content">
+      <main className="main-container">
+        <section className="main-content">
           <div className="background">
             <svg viewBox="0 0 500 150" preserveAspectRatio="none">
               <path d="M-7.62,144.56 C161.11,154.44 316.87,131.73 501.97,145.55 L500.00,0.00 L0.00,0.00 Z"></path>
@@ -56,8 +56,8 @@ function App() {
             <img src={arrowDown} alt='arrow down' onClick={() => executeScroll()}/>
           </div>
 
-          <Grid container className="mainContent">
-            <Grid item xs={3} className="sideImage">
+          <Grid container className="main-middle-content">
+            <Grid item xs={3} className="side-image">
               <img src={leftImage} alt='coffe table' />
             </Grid>
 
@@ -72,13 +72,13 @@ function App() {
               </ul>
             </Grid>
 
-            <Grid item xs={3} className="sideImage">
+            <Grid item xs={3} className="side-image">
               <img src={rightImage} alt='user desk' />
             </Grid>
           </Grid>
         </section>
 
-        <section className="mainContainer__plans" ref={plansSection}>
+        <section className="main-plans" ref={plansSection}>
           <p>Quero pagar a cada:</p>
           <RadioGroup
             selected={selected}
@@ -87,7 +87,7 @@ function App() {
           />
         </section>
 
-        <section className="mainContainer__carousel">
+        <section className="main-carousel">
           <Carousel
             containerClass="carousel-container"
             itemClass="carousel-item-padding"

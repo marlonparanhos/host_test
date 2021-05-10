@@ -1,189 +1,193 @@
-@import '../../styles/global.scss';
+@import '../../styles/global';
 
-.planCard {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  height: 650px;
-  width: 330px;
-  justify-content: space-between;
-  align-items: center;
-  padding: 60px 30px;
-  background: #FFFFFF 0% 0% no-repeat padding-box;
-  border: 1px solid $border-color;
-  border-radius: 4px;
-  margin: 20px 0;
+.plan-card {
+	align-items: center;
+	background: #fff 0% 0% no-repeat padding-box;
+	border: 1px solid $border-color;
+	border-radius: 4px;
+	display: flex;
+	flex-direction: column;
+	height: 650px;
+	justify-content: space-between;
+	margin: 20px 0;
+	padding: 60px 30px;
+	position: relative;
+	width: 330px;
 
-  .cardHover {
-    display: none;
-    position: absolute;
-    height: 14px;
-    width: 330px;
-    z-index: -1;
-    background: $hover-color 0% 0% no-repeat padding-box;
-    border: 1px solid $border-color;
-    transition: all .2s ease-in-out;
-  }
+	%card-hover {
+		background: $hover-color 0% 0% no-repeat padding-box;
+		border: 1px solid $border-color;
+		display: none;
+		height: 14px;
+		position: absolute;
+		transition: all .2s ease-in-out;
+		width: 330px;
+		z-index: -1;
+	}
 
-  .cardHoverUp {
-    @extend .cardHover;
-    top: 0;
-    border-radius: 4px 4px 0 0;
-  }
+	.card-hover-up {
+		@extend %card-hover;
+		border-radius: 4px 4px 0 0;
+		top: 0;
+	}
 
-  .cardHoverDown {
-    @extend .cardHover;
-    bottom: 0;
-    border-radius: 0 0 4px 4px;
-  }
+	.card-hover-down {
+		@extend %card-hover;
+		border-radius: 0 0 4px 4px;
+		bottom: 0;
+	}
 
-  &:hover {
-    .cardHoverUp {
-      display: block;
-      top: -12px;
-    }
-    .cardHoverDown {
-      display: block;
-      bottom: -12px;
-    }
-  }
+	&:hover {
+		.card-hover-up {
+			display: block;
+			top: -12px;
+		}
 
-  &__section01 {
-    display: flex;
-    gap: 8px;
-    width: 100%;
-    position: relative;
+		.card-hover-down {
+			bottom: -12px;
+			display: block;
+		}
+	}
 
-    h2 {
-      text-align: center;
-      font: normal normal bold 26px/26px Montserrat;
-      letter-spacing: 0px;
-      color: $primary-color;
-    }
-  }
+	&__section01 {
+		display: flex;
+		gap: 8px;
+		position: relative;
+		width: 100%;
 
-  &__section02 {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    margin: 10px 0;
+		h2 {
+			color: $primary-color;
+			font: normal normal bold 26px/26px Montserrat;
+			letter-spacing: 0;
+			text-align: center;
+		}
+	}
 
-    button {
-      width: 280px;
-      height: 52px;
-      background: $secondary-color 0% 0% no-repeat padding-box;
-      border-radius: 26px;
-      border: none;
-      font: normal normal bold 22px/27px Montserrat;
-      color: #FFFFFF;
-      cursor: pointer;
-      margin: 14px 0;
-      transition: all .2s ease-in-out;
+	&__section02 {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		margin: 10px 0;
+		width: 100%;
 
-      &:hover {
-        transform: scale(1.04);
-        background: $hover-color 0% 0% no-repeat padding-box;
-      }
-    }
+		button {
+			background: $secondary-color 0% 0% no-repeat padding-box;
+			border: 0 hidden $border-color;
+			border-radius: 26px;
+			color: #fff;
+			cursor: pointer;
+			font: normal normal bold 22px/27px Montserrat;
+			height: 52px;
+			margin: 14px 0;
+			transition: all .2s ease-in-out;
+			width: 280px;
 
-    .priceTop {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+			&:hover {
+				background: $hover-color 0% 0% no-repeat padding-box;
+				transform: scale(1.04);
+			}
+		}
 
-      p {
-        font: normal normal normal 13px/19px Montserrat;
-        letter-spacing: 0px;
-        color: $text-color;
-      }
+		.price-top {
+			align-items: center;
+			display: flex;
+			flex-direction: column;
 
-      .dashedPrice {
-        display: flex;
-        gap: 4px;
+			p {
+				color: $text-color;
+				font: normal normal normal 13px/19px Montserrat;
+				letter-spacing: 0;
+			}
+		}
 
-        p { text-decoration: line-through; }
-      }
-    }
+		.dashed-price {
+			display: flex;
+			gap: 4px;
 
-    .priceMiddle {
-      font: normal normal normal 20px/24px Montserrat;
-      letter-spacing: 0px;
-      color: $primary-color;
+			p { text-decoration: line-through; }
+		}
 
-      strong { font: normal normal bold 35px/24px Montserrat; }
-    }
+		.price-middle {
+			color: $primary-color;
+			font: normal normal normal 20px/24px Montserrat;
+			letter-spacing: 0;
 
-    .priceBottom {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
+			strong { font: normal normal bold 35px/24px Montserrat; }
+		}
 
-      strong {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        font: normal normal bold 15px/20px Montserrat;
-        letter-spacing: 0px;
-        color: $text-color;
+		img {
+			cursor: pointer;
+			transition: all .2s ease-in-out;
 
-        img {
-          transition: all .2s ease-in-out;
-          cursor: pointer;
+			&:hover { transform: scale(1.2); }
+		}
 
-          &:hover { transform: scale(1.2); }
-        }
-      }
+		.price-bottom {
+			align-items: center;
+			display: flex;
+			flex-direction: column;
+			gap: 4px;
 
-      p {
-        font: normal normal normal 14px/18px Montserrat;
-        color: $primary-color;
-      }
+			strong {
+				align-items: center;
+				color: $text-color;
+				display: flex;
+				font: normal normal bold 15px/20px Montserrat;
+				gap: 4px;
+				letter-spacing: 0;
+			}
 
-      span:last-child {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        gap: 4px;
+			p {
+				color: $primary-color;
+				font: normal normal normal 14px/18px Montserrat;
+			}
+		}
 
-        span {
-          background: $badge-color 0% 0% no-repeat padding-box;
-          border-radius: 224px;
-          width: 80px;
-          height: 24px;
-          font: normal normal bold 14px/18px Montserrat;
-          color: #FFFFFF;
-          text-transform: uppercase;
-        }
-      }
-    }
+		.price-bottom-badge {
+			align-items: center;
+			display: flex;
+			gap: 4px;
+			justify-content: center;
+			width: 100%;
 
-  }
+			span {
+				align-items: center;
+				background: $badge-color 0% 0% no-repeat padding-box;
+				border-radius: 224px;
+				color: #fff;
+				display: flex;
+				font: normal normal bold 14px/18px Montserrat;
+				height: 24px;
+				justify-content: center;
+				text-transform: uppercase;
+				width: 80px;
+			}
+		}
 
-  &__section03 {
-    width: 100%;
+	}
 
-    ul {
-      list-style: none;
+	&__section03 {
+		width: 100%;
 
-      li {
-        font: normal normal normal 16px/32px Montserrat;
-        color: $text-color;
-      }
-    }
-  }
+		ul {
+			list-style: none;
 
-  hr {
-    border: 1px solid $border-color;
-    width: 330px;
-  }
+			li {
+				color: $text-color;
+				font: normal normal normal 16px/32px Montserrat;
+			}
+		}
+	}
 
-  div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+	hr {
+		border: 1px solid $border-color;
+		width: 330px;
+	}
+
+	div {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
 }

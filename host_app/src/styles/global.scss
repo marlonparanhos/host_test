@@ -1,44 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap');
 
-$primary-color: #1D5297;
-$secondary-color: #4480C5;
-$background-color: #F1F6FB;
-$subtitle-color: #B9D0EF;
-$hover-color: #FF6A17;
-$border-color: #DFECFF;
-$text-color: #333333;
-$badge-color: #51C99C;
-$header-color: #16437E;
+$primary-color: #1d5297;
+$secondary-color: #4480c5;
+$background-color: #f1f6fb;
+$subtitle-color: #b9d0ef;
+$hover-color: #ff6a17;
+$border-color: #dfecff;
+$text-color: #333;
+$badge-color: #51c99c;
+$header-color: #16437e;
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 body {
-  background: $background-color 0% 0% no-repeat padding-box;
-  font: 400 16px Montserrat, sans-serif;
+	background: $background-color 0% 0% no-repeat padding-box;
+	font: 400 16px Montserrat, sans-serif;
 }
 
 header {
-  height: 52px;
-  padding-left: 18%;
-  display: flex;
-  align-items: center;
-  background: #FFFFFF;
-  width: 100%;
+	align-items: center;
+	background: #fff;
+	display: flex;
+	height: 52px;
+	padding-left: 18%;
+	width: 100%;
 }
 
 footer {
-  a {
-    display: flex;
-    justify-content: flex-end;
-    width: 90%;
-    text-decoration: underline;
-    font: normal normal normal 12px/12px Montserrat;
-    color: $secondary-color;
-    opacity: 0.7;
-    padding-bottom: 20px;
-  }
+	a {
+		color: $secondary-color;
+		display: flex;
+		font: normal normal normal 12px/12px Montserrat;
+		justify-content: flex-end;
+		opacity: 0.7;
+		padding-bottom: 20px;
+		text-decoration: underline;
+		width: 90%;
+	}
 }
