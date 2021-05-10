@@ -1,0 +1,5 @@
+# Regras de negócio para a consulta de planos
+
+Regras:
+    ✔ Consultar a API "https://2891637c-8ab7-4a84-906b-a98465726f85.mock.pstmn.io/prices" para obter os preços e nome dos planos (Plano P, Plano M e Plano Turbo), via JS; @done(21-05-10 15:32)
+    ✔ Filtar todos os planos e retornar apenas o solicitados (Plano P, Plano M e Plano Turbo) @done(21-05-10 15:32)
