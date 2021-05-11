@@ -28,20 +28,20 @@ export default function Card({ data, selected, discount }) {
     case '3 anos':
       planType = {
         name: 'triennially',
-        perid: 36
+        period: 36
       }
       break
     case '1 ano':
       planType = {
         name: 'annually',
-        perid: 12
+        period: 12
       }
       break
 
     case '1 mês':
       planType = {
         name: 'monthly',
-        perid: 1
+        period: 1
       }
       break
   }
@@ -50,7 +50,7 @@ export default function Card({ data, selected, discount }) {
 
   const valueA = handleValue(priceOrder).toLocaleString('pt-BR', format)
   const valueB = handleValue(priceOrder, discount).toLocaleString('pt-BR', format)
-  const valueC = (handleValue(priceOrder) / planType.perid).toLocaleString('pt-BR', format)
+  const valueC = (handleValue(priceOrder, discount) / planType.period).toLocaleString('pt-BR', format)
   const valueD = (handleValue(priceOrder) - handleValue(priceOrder, discount)).toLocaleString('pt-BR', format)
 
   return (
