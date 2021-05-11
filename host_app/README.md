@@ -22,7 +22,7 @@ or if you're using Yarn:
 $ yarn
 ```
 
-**Make sure to create a file ".env" in root directory of project and add this code:**
+**Make sure to create a file ".env" in root directory of the project and add this code:**
 ```
 REACT_APP_URL = https://www.hostgator.com.br
 ```
