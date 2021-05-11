@@ -22,6 +22,11 @@ or if you're using Yarn:
 $ yarn
 ```
 
+**Make sure to create a file ".env" in root directory of the project and add this code:**
+```
+REACT_APP_URL = https://www.hostgator.com.br
+```
+
 After all depencies has been installed, you can run the project by executing:
 ```
 $ npm start
